@@ -24,7 +24,7 @@ fetch(dadJokeUrl, dadJokeOptions).then(function(response) {
 })
 
 //Book finder API variables
-const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?&title=Harry%20Potter&author=J.K.%20Rowling&results_per_page=25&page=1';
+const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?&title=Harry+Potter&author=J.K.+Rowling&results_per_page=25&page=1';
 const bookFinderOptions = {
     method: 'GET',
     headers: {
