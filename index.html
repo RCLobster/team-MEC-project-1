@@ -18,17 +18,6 @@
         </p>
     </header>
 
-    <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Right-aligned menu example
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><button class="dropdown-item" type="button">Action</button></li>
-          <li><button class="dropdown-item" type="button">Another action</button></li>
-          <li><button class="dropdown-item" type="button">Something else here</button></li>
-        </ul>
-      </div>
-
     <div class="container">
         <form class="search" id="bookSearch">
            <div>
@@ -40,6 +29,17 @@
                     <label for="authorName" class="form-label"><strong>Author:</strong></label>
                     <input type="text" class="form-control" id="authorName" placeholder="E.g., F. Scott Fitzgerald" required>
                 </div>
+                <div class="btn-group">
+                    <label for="genre" class="form-label"><strong>Genre: </strong></label>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Right-aligned menu example
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><button class="dropdown-item" type="button">Action</button></li>
+                      <li><button class="dropdown-item" type="button">Another action</button></li>
+                      <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                  </div>
                 <div>
                     <label for="isbnNumber" class="form-label"><strong>ISBN:</strong></label>
                     <input type="text" class="form-control" id="isbnNumber" placeholder="E.g., 9780333791035" required>
