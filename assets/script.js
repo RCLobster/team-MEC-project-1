@@ -18,6 +18,7 @@ const dadJokeOptions = {
 fetch(dadJokeUrl, dadJokeOptions).then(function(response) {
     response.json().then(function(data) {
         console.log(data);
+        //set the quote element ID to joke text
         quoteID.textContent = data[0].joke;
     })
 })
