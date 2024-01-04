@@ -1,10 +1,10 @@
 //ELEMENT GRABS
 
 //VARIABLES
-
+var key;
 
 //Book finder API variables
-const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?title=Percy%20Jackson&author=Rick%20Riordan&results_per_page=25&page=1';
+const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?&title=Harry%20Potter&author=J.K.%20Rowling&results_per_page=25&page=1';
 const bookFinderOptions = {
     method: 'GET',
     headers: {
@@ -19,31 +19,16 @@ fetch(bookFinderUrl, bookFinderOptions).then(function (response) {
     //convert that response into a json object called data
     response.json().then(function (data) {
         console.log(data);
-        //data[2].work_id
+        key = data.results[2].canonical_isbn;
+        getBookCoverImg(key);
     })
 })
-
-//Google Books Images API variables
-// const googleImgUrl = "https://www.googleapis.com/books/v1/volumes?q="
-// const googleImgOptions = {
-//     method: "GET"
-// }
-
-
-// fetch(googleImgUrl, googleImgOptions).then(function(response){
-//     response.json().then(function(data){
-//         console.log(data);
-//     })
-// })
 
 //Open Library book cover API
-const openLibraryUrl = "https://covers.openlibrary.org/b/$key/$value-$size.jpg";
-const openLibraryOptions = {
-    method: "GET"
-}
+function getBookCoverImg (key) {
+    const openLibraryUrl = "https://covers.openlibrary.org/b/ISBN/" + key + "-M.jpg";
+    console.log(openLibraryUrl);
 
-fetch(openLibraryUrl, openLibraryOptions).then(function(response){
-    response.json().then(function(data){
-        console.log(data);
-    })
-})
+    //create img element and set src="above link"
+
+}
