@@ -1,6 +1,8 @@
 //ELEMENT GRABS
 var quoteID = document.getElementById("randomQuote");
 var resultsEl = document.getElementById("searchResults");
+var saveJokeBtn = document.getElementById("saveJokeBtn");
+var viewJokesBtn = document.getElementById("viewJokesBtn");
 
 //BookCover Img finder VARIABLES
 var key; //will be filled with ISBN # to be put into getBookCoverImg()
@@ -27,8 +29,8 @@ const dadJokeOptions = {
     }
 }
 
-fetch(dadJokeUrl, dadJokeOptions).then(function(response) {
-    response.json().then(function(data) {
+fetch(dadJokeUrl, dadJokeOptions).then(function (response) {
+    response.json().then(function (data) {
         //console.log(data);
         //set the quote element ID to joke text
         quoteID.textContent = data[0].joke;
@@ -36,51 +38,40 @@ fetch(dadJokeUrl, dadJokeOptions).then(function(response) {
 })
 
 //Dynamic fetch requests based on user input
-/*
-THE PLAN
-1. --capture user input into variables
-2. dynamically modify the inputs to fit into API call required format .replace(" ", "+")
-3. if there is an input, insert user search criteria into API url call
-4. retrieve and parse data
-5. use for loop to create new elements for each result and apply data
-6. append new elements into resultsEl as <li> elements
-7. BONUS include links in each <li> to buy the book
-*/
-
 
 function editUserInput(event) {
     event.preventDefault();
     // FIGURE OUT HOW TO ADD ONLY ONE + REGARDLESS OF HOW MANY SPACES
-    
+
     //make a var to hold edited user input and remove all spaces to replace with +
     var newUserTitle = userTitle.value.replaceAll(" ", "+");
     //make a var to hold API search parameter
     var apiTitle = "&title=";
     //combine edited user input with API search parameter
-    finalTitalSearch = apiTitle + newUserTitle; 
+    finalTitalSearch = apiTitle + newUserTitle;
     //if the title search is empty, set the final search var to be empty
-    if(userTitle.value == ""){
+    if (userTitle.value == "") {
         finalTitalSearch = "";
     }
     //console.log(finalTitalSearch);
-    
-    
+
+
     var newUserAuthor = userAuthor.value.replaceAll(" ", "+");
     var apiAuthor = "&author=";
     finalAuthorSearch = apiAuthor + newUserAuthor;
-    if(userAuthor.value == ""){
+    if (userAuthor.value == "") {
         finalAuthorSearch = "";
     }
     //console.log(finalAuthorSearch);
-    
-    
+
+
     console.log(userGenre.value);
     var apiGenre = "&categories="
     finalGenreSearch = apiGenre + userGenre.value;
-    if(userGenre.value == "null"){
+    if (userGenre.value == "null") {
         finalGenreSearch = "";
     }
-    console.log(typeof finalGenreSearch);
+    //console.log(typeof finalGenreSearch);
 
     bookFinderApiCall();
 }
@@ -96,7 +87,7 @@ function bookFinderApiCall() {
             'X-RapidAPI-Host': 'book-finder1.p.rapidapi.com'
         }
     };
-    
+
     //send a request out to Book Finder API and get a response
     fetch(bookFinderUrl, bookFinderOptions).then(function (response) {
         //console.log(response);
@@ -104,8 +95,10 @@ function bookFinderApiCall() {
         response.json().then(function (data) {
             console.log(data);
             //loop through all the results and apply cover images to each item
-             
-            for(var x=0; x<data.results.length; x++){ 
+
+            //clear the results div ul before filling with new searches
+            resultsEl.innerHTML = "";
+            for (var x = 0; x < data.results.length; x++) {
                 //create the parent <li> element
                 var listEl = document.createElement("li");
                 //create an ID for this <li>
@@ -126,7 +119,7 @@ function bookFinderApiCall() {
 
                 var seriesEl = document.createElement("p");
                 //check if results[x].series_name is NOT null before filling the innerHTML, if it IS null, do not write anything to webpage
-                if(data.results[x].series_name !== null){
+                if (data.results[x].series_name !== null) {
                     seriesEl.innerHTML = "<strong>Series: </strong>" + data.results[x].series_name;
 
                 }
@@ -146,12 +139,12 @@ function bookFinderApiCall() {
 
                 var isbnEl = document.createElement("p");
                 isbnEl.innerHTML = "<strong>ISBN Number: </strong>" + data.results[x].canonical_isbn;
-                
+
                 //using the results[x] isbn number, make a call to openlibrary to grab a cover img based on the isbn
                 key = data.results[x].canonical_isbn;
                 const openLibraryUrl = "https://covers.openlibrary.org/b/ISBN/" + key + "-M.jpg";
                 //console.log(openLibraryUrl);
-            
+
                 //create img element and set src="above link" to add found cover img into the <img> element
                 var coverImgEl = document.createElement("img");
                 coverImgEl.setAttribute("src", openLibraryUrl);
@@ -172,18 +165,5 @@ function bookFinderApiCall() {
         })
     })
 }
-
-//Function to grab book cover img from Open Library website
-// function getBookCoverImg (key) {
-//     const openLibraryUrl = "https://covers.openlibrary.org/b/ISBN/" + key + "-M.jpg";
-//     console.log(openLibraryUrl);
-
-//     //create img element and set src="above link"
-//     var coverImgEl = document.createElement("img");
-//     coverImgEl.setAttribute("src", openLibraryUrl);
-
-//     resultsEl.appendChild(coverImgEl);
-
-// }
 
 searchBtn.addEventListener("click", editUserInput);
