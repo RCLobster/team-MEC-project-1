@@ -1,0 +1,22 @@
+
+
+/* header styling and font colors */
+header {
+    background-color: #F5903D;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px;
+  }
+  .page-title {
+    font-size: 85px;
+  }
+
+  /* sizing and style for random generated joke */
+
+  .quote {
+    font-style: italic;
+    font-size: 20px;
+  }
