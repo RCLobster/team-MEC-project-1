@@ -106,9 +106,46 @@ function bookFinderApiCall() {
             //loop through all the results and apply cover images to each item
              
             for(var x=0; x<data.results.length; x++){ 
+                //create the parent <li> element
                 var listEl = document.createElement("li");
+                //create an ID for this <li>
+                listEl.setAttribute("id", "resultParentLi");
+
+                //create a title element with <h3>
                 var titleEl = document.createElement("h3");
+                //set an ID for this h3 title element
+                titleEl.setAttribute("id", "resultTitle");
+                //set the text of h3 to the title in results[x]
                 titleEl.textContent = data.results[x].title;
+
+                //create an element to hold author name
+                var authorEl = document.createElement("p");
+                //set the text of element to authors in results[x]
+                //I used innHTML so that Author: could be wrapped with strong tags
+                authorEl.innerHTML = "<strong>Author: </strong>" + data.results[x].authors;
+
+                var seriesEl = document.createElement("p");
+                //check if results[x].series_name is NOT null before filling the innerHTML, if it IS null, do not write anything to webpage
+                if(data.results[x].series_name !== null){
+                    seriesEl.innerHTML = "<strong>Series: </strong>" + data.results[x].series_name;
+
+                }
+
+                var genreEl = document.createElement("p");
+                //find a way to make the subcategories NOT bold
+                genreEl.innerHTML = "<strong>Genre: " + data.results[x].subcategories;
+
+                var summaryEl = document.createElement("p");
+                summaryEl.innerHTML = "<strong>Summary: </strong>" + data.results[x].summary;
+
+                var pageCountEl = document.createElement("p");
+                pageCountEl.innerHTML = "<strong>Page Count: </strong>" + data.results[x].page_count;
+
+                var copyrightEl = document.createElement("p");
+                copyrightEl.innerHTML = "<strong>Copyright: </strong>" + data.results[x].copyright;
+
+                var isbnEl = document.createElement("p");
+                isbnEl.innerHTML = "<strong>ISBN Number: </strong>" + data.results[x].canonical_isbn;
                 
                 //using the results[x] isbn number, make a call to openlibrary to grab a cover img based on the isbn
                 key = data.results[x].canonical_isbn;
@@ -118,15 +155,22 @@ function bookFinderApiCall() {
                 //create img element and set src="above link" to add found cover img into the <img> element
                 var coverImgEl = document.createElement("img");
                 coverImgEl.setAttribute("src", openLibraryUrl);
-                console.log(coverImgEl.width);
-                
+                //console.log(coverImgEl.width);
+
                 listEl.appendChild(titleEl);
                 listEl.appendChild(coverImgEl);
+                listEl.appendChild(authorEl);
+                listEl.appendChild(seriesEl);
+                listEl.appendChild(genreEl);
+                listEl.appendChild(summaryEl);
+                listEl.appendChild(pageCountEl);
+                listEl.appendChild(copyrightEl);
+                listEl.appendChild(isbnEl);
+
                 resultsEl.appendChild(listEl);
             }
         })
     })
-
 }
 
 //Function to grab book cover img from Open Library website
