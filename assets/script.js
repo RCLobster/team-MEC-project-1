@@ -119,7 +119,7 @@ function bookFinderApiCall() {
                 var coverImgEl = document.createElement("img");
                 coverImgEl.setAttribute("src", openLibraryUrl);
                 console.log(coverImgEl.width);
-                
+
                 listEl.appendChild(titleEl);
                 listEl.appendChild(coverImgEl);
                 resultsEl.appendChild(listEl);
