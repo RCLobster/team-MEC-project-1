@@ -1,8 +1,15 @@
 //ELEMENT GRABS
 var quoteID = document.getElementById("randomQuote");
+var resultsEl = document.getElementById("searchResults")
 
-//VARIABLES
+//BookCover Img finder VARIABLES
 var key; //will be filled with ISBN # to be put into getBookCoverImg()
+
+//BookFinder API VARIBALES
+var userTitle
+var userAuthor
+var userGenre
+var userIsbn
 
 //random dad joke API variables
 const dadJokeUrl = "https://api.api-ninjas.com/v1/dadjokes?limit=1";
@@ -22,6 +29,20 @@ fetch(dadJokeUrl, dadJokeOptions).then(function(response) {
         quoteID.textContent = data[0].joke;
     })
 })
+
+//Dynamic fetch requests based on user input
+/*
+THE PLAN
+1. capture user input into variables
+2. dynamically modify the inputs to fit into API call required format
+3. if there is an input, insert user search criteria into API url call
+4. retrieve and parse data
+5. use for loop to create new elements for each result and apply data
+6. append new elements into resultsEl as <li> elements
+7. BONUS include links in each <li> to buy the book
+*/
+
+
 
 //Book finder API variables
 const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?&title=Harry+Potter&author=J.K.+Rowling&results_per_page=25&page=1';
