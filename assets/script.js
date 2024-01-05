@@ -46,11 +46,12 @@ THE PLAN
 6. append new elements into resultsEl as <li> elements
 7. BONUS include links in each <li> to buy the book
 */
+
+
 function editUserInput(event) {
     event.preventDefault();
-    // console.log(userAuthor.value);
-    // console.log(userGenre.value);
-    // console.log(userIsbn.value);
+    // FIGURE OUT HOW TO ADD ONLY ONE + REGARDLESS OF HOW MANY SPACES
+    
     //make a var to hold edited user input and remove all spaces to replace with +
     var newUserTitle = userTitle.value.replaceAll(" ", "+");
     //make a var to hold API search parameter
@@ -61,32 +62,33 @@ function editUserInput(event) {
     if(userTitle.value == ""){
         finalTitalSearch = "";
     }
-    console.log(finalTitalSearch);
-
-
+    //console.log(finalTitalSearch);
+    
+    
     var newUserAuthor = userAuthor.value.replaceAll(" ", "+");
     var apiAuthor = "&author=";
     finalAuthorSearch = apiAuthor + newUserAuthor;
     if(userAuthor.value == ""){
         finalAuthorSearch = "";
     }
-    console.log(finalAuthorSearch);
-
-
+    //console.log(finalAuthorSearch);
+    
+    
+    console.log(userGenre.value);
     var apiGenre = "&categories="
-    var finalGenreSearch = apiGenre + userGenre.value;
+    finalGenreSearch = apiGenre + userGenre.value;
     if(userGenre.value == "null"){
         finalGenreSearch = "";
     }
-    console.log(finalGenreSearch);
+    console.log(typeof finalGenreSearch);
 
-
-    
+    bookFinderApiCall();
 }
 
 function bookFinderApiCall() {
     //Book finder API variables
-    const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?' + finalTitalSearch + userAuthor + userGenre + userIsbn + '&results_per_page=25&page=1';
+    const bookFinderUrl = 'https://book-finder1.p.rapidapi.com/api/search?' + finalTitalSearch + finalAuthorSearch + finalGenreSearch + '&results_per_page=25&page=1';
+    console.log(bookFinderUrl);
     const bookFinderOptions = {
         method: 'GET',
         headers: {
@@ -102,20 +104,42 @@ function bookFinderApiCall() {
         response.json().then(function (data) {
             console.log(data);
             //loop through all the results and apply cover images to each item
-            key = data.results[2].canonical_isbn;
-            getBookCoverImg(key);
+             
+            for(var x=0; x<data.results.length; x++){ 
+                var listEl = document.createElement("li");
+                var titleEl = document.createElement("h3");
+                titleEl.textContent = data.results[x].title;
+                
+                //using the results[x] isbn number, make a call to openlibrary to grab a cover img based on the isbn
+                key = data.results[x].canonical_isbn;
+                const openLibraryUrl = "https://covers.openlibrary.org/b/ISBN/" + key + "-M.jpg";
+                //console.log(openLibraryUrl);
+            
+                //create img element and set src="above link" to add found cover img into the <img> element
+                var coverImgEl = document.createElement("img");
+                coverImgEl.setAttribute("src", openLibraryUrl);
+                console.log(coverImgEl.width);
+                
+                listEl.appendChild(titleEl);
+                listEl.appendChild(coverImgEl);
+                resultsEl.appendChild(listEl);
+            }
         })
     })
 
 }
 
 //Function to grab book cover img from Open Library website
-function getBookCoverImg (key) {
-    const openLibraryUrl = "https://covers.openlibrary.org/b/ISBN/" + key + "-M.jpg";
-    console.log(openLibraryUrl);
+// function getBookCoverImg (key) {
+//     const openLibraryUrl = "https://covers.openlibrary.org/b/ISBN/" + key + "-M.jpg";
+//     console.log(openLibraryUrl);
 
-    //create img element and set src="above link"
+//     //create img element and set src="above link"
+//     var coverImgEl = document.createElement("img");
+//     coverImgEl.setAttribute("src", openLibraryUrl);
 
-}
+//     resultsEl.appendChild(coverImgEl);
+
+// }
 
 searchBtn.addEventListener("click", editUserInput);
