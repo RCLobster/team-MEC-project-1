@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link src="./assets/style.css">
     <title>Project 1</title>
+    <link rel="stylesheet" href="./assets/style.css">
 
 </head>
+
 <body>
     <header>
         <h1 class="page-title">
             Welcome to Book Search
         </h1>
-        <p class="quote" id="randomQuote">
-
-        </p>
+        <p class="quote" id="randomQuote"></p>
+        <div>
+            <button type="submit" class="btn btn-primary" id="saveJokeBtn">Save Joke</button>
+            <button type="submit" class="btn btn-primary" id="viewJokesBtn">View Saved Jokes</button>
+        </div>
     </header>
 
     <div class="container">
         <form class="search" id="bookSearch">
-           <div>
+            <div>
                 <div>
                     <label for="titleName" class="form-label"><strong>Title:</strong></label>
-                    <input type="text" class="form-control" id="titleName" placeholder="E.g., The Great Gatsby" required>
+                    <input type="text" class="form-control" id="titleName" placeholder="E.g., The Great Gatsby"
+                        required>
                 </div>
                 <div>
                     <label for="authorName" class="form-label"><strong>Author:</strong></label>
-                    <input type="text" class="form-control" id="authorName" placeholder="E.g., F. Scott Fitzgerald" required>
+                    <input type="text" class="form-control" id="authorName" placeholder="E.g., F. Scott Fitzgerald"
+                        required>
                 </div>
                 <div class="btn-group">
                     <label for="genre" class="form-label"><strong>Genre: </strong></label>
                     <select class="form-select" id="genreDropdown" aria-label="Default select example">
-                        <option value="null" selected>Select Genre</option>
+                        <option value="null">Select Genre</option>
                         <option value="Reference">Academic Textbook</option>
-                        <option value="Hobbies,+Sports+&+Outdoors">Action</option>
-                        <option value="Art,+Creativity+&+Music">Art & Music</option>
-                        <option value="Real+Life">Biography/Autobiography</option>
-                        <option value="General+Literature">Literature</option>
-                        <option value="Science+Fiction+&+Fantasy">Science Fiction</option>
-                        <option value="Science+&+Technology">Science & Technology</option>
-                        <option value="Mystery+&+Suspense">Mystery & Thriller</option>
-                        <option value="Animals,+Bugs+&+Pets">Wildlife</option>
-                      </select>
-                  </div>
-                <div>
-                    <label for="isbnNumber" class="form-label"><strong>ISBN:</strong></label>
-                    <input type="text" class="form-control" id="isbnNumber" placeholder="E.g., 9780333791035" required>
+                        <option value="Hobbies,%20Sports%20%26%20Outdoors">Action</option>
+                        <option value="Art,%20Creativity%20%26%20Music">Art & Music</option>
+                        <option value="Real%20Life">Biography/Autobiography</option>
+                        <option value="General%20Literature">Literature</option>
+                        <option value="Science%20Fiction%20%26%20Fantasy">Science Fiction</option>
+                        <option value="Science%20%26%20Technology">Science & Technology</option>
+                        <option value="Mystery%20%26%20Suspense">Mystery & Thriller</option>
+                        <option value="Animals,%20Bugs%20%26%20Pets">Wildlife</option>
+                    </select>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary" id="searchBtn">Search</button>
@@ -66,6 +70,9 @@
 
     </footer>
     <script src="./assets/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
