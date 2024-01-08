@@ -119,6 +119,7 @@ function bookFinderApiCall() {
                 titleEl.setAttribute("id", "resultTitle");
                 //set the text of h3 to the title in results[x]
                 titleEl.textContent = data.results[x].title;
+                titleEl.style.fontWeight = "bold";
 
                 //create an element to hold author name
                 var authorEl = document.createElement("p");
@@ -135,7 +136,7 @@ function bookFinderApiCall() {
 
                 var genreEl = document.createElement("p");
                 //find a way to make the subcategories NOT bold
-                genreEl.innerHTML = "<strong>Genre: " + data.results[x].subcategories;
+                genreEl.innerHTML = "<strong>Genre: </strong>" + data.results[x].subcategories;
 
                 var summaryEl = document.createElement("p");
                 summaryEl.innerHTML = "<strong>Summary: </strong>" + data.results[x].summary;
