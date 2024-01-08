@@ -1,3 +1,7 @@
+*{
+  font-family: 'Urbanist', sans-serif;
+}
+
 /* Margins and padding for elements */
 
 body, h1, p, ul {
@@ -27,6 +31,8 @@ header {
     border-bottom: 2px solid black;
     padding: 10px;
     margin-bottom: 10px;
+
+
   }
 
   /* Title font styling */
@@ -40,10 +46,16 @@ header {
     font-style: italic;
     font-size: 20px;
   }
+select, .form-label{
+  display: block !important;
+  clear: both;
+
+}
+
 
   /* Genre button styling */
-  .btn-group {
-    margin-top: 20px;
-    padding: 0px;
+
+    /* margin-top: 20px;
+    padding-bottom: 20px;
     font-size: 20px;
-  }
+  } */
