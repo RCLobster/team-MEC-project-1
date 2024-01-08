@@ -35,3 +35,7 @@ header {
     font-style: italic;
     font-size: 20px;
   }
+
+#resultParentLi {
+  border: 3px black;
+}

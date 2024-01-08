@@ -104,6 +104,11 @@ function bookFinderApiCall() {
                 var listEl = document.createElement("li");
                 //create an ID for this <li>
                 listEl.setAttribute("id", "resultParentLi");
+                listEl.style.margin = "10px";
+                listEl.style.padding = "10px";
+                listEl.style.border = "2px solid black";
+                listEl.style.borderRadius = "20px";
+                listEl.style.listStyleType = "none";
 
                 //create a title element with <h3>
                 var titleEl = document.createElement("h3");
@@ -177,6 +182,10 @@ function viewSavedJokes() {
     //loop through jokesToDisplay[] and create elemnets for each joke saved in localStorage
     for(x=0; x<jokesToDisplay.length; x++) {
         var liEl = document.createElement("li");
+        //add dynamic styling
+        liEl.style.listStyleType = "none";
+        liEl.style.padding = "3px 0px";
+        liEl.style.borderBottom = "2px solid gray";
         var pEl = document.createElement("p");
         pEl.textContent = jokesToDisplay[x];
         //append all the pieces together
