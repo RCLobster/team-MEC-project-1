@@ -4,6 +4,7 @@ var resultsEl = document.getElementById("searchResults");
 var saveJokeBtn = document.getElementById("saveJokeBtn");
 var viewJokesBtn = document.getElementById("viewJokesBtn");
 var savedJokeModalText = document.getElementById("modal-text");
+var clearJokesBtn = document.getElementById("clearJokesBtn");
 
 //BookCover Img finder VARIABLES
 var key; //will be filled with ISBN # to be put into getBookCoverImg()
@@ -35,6 +36,7 @@ fetch(dadJokeUrl, dadJokeOptions).then(function (response) {
         //console.log(data);
         //set the quote element ID to joke text
         quoteID.textContent = data[0].joke;
+        quoteID.style.margin = "5px";
     })
 })
 
@@ -104,6 +106,7 @@ function bookFinderApiCall() {
                 var listEl = document.createElement("li");
                 //create an ID for this <li>
                 listEl.setAttribute("id", "resultParentLi");
+                //add dynamic styles as elements are created
                 listEl.style.margin = "10px";
                 listEl.style.padding = "10px";
                 listEl.style.border = "2px solid black";
@@ -172,6 +175,11 @@ function bookFinderApiCall() {
     })
 }
 
+
+function clearJokeStorage() {
+    localStorage.clear();
+}
+
 function viewSavedJokes() {
     //empty the modal contents
     savedJokeModalText.innerHTML = "";
@@ -183,7 +191,8 @@ function viewSavedJokes() {
     for(x=0; x<jokesToDisplay.length; x++) {
         var liEl = document.createElement("li");
         //add dynamic styling
-        liEl.style.listStyleType = "none";
+        liEl.style.listStyleType = "arabic";
+        liEl.style.margin = "5px";
         liEl.style.padding = "3px 0px";
         liEl.style.borderBottom = "2px solid gray";
         var pEl = document.createElement("p");
@@ -210,7 +219,9 @@ function saveJoke() {
     localStorage.setItem("savedJokes", JSON.stringify(jokeToSave));
 }
 
-viewJokesBtn.addEventListener("click", viewSavedJokes)
+
+clearJokesBtn.addEventListener("click", clearJokeStorage);
+viewJokesBtn.addEventListener("click", viewSavedJokes);
 saveJokeBtn.addEventListener("click", saveJoke);
 
 searchBtn.addEventListener("click", editUserInput);
