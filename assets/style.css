@@ -11,8 +11,10 @@ body {
     background-color: #bdd5a0a3;
 }
 
+/* class for search bars to left side of page */
 .container {
-    margin: 20px;
+  width: 33.33%;
+  float: left;
 }
 
 /* header styling and font colors */
@@ -24,7 +26,10 @@ header {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     padding: 10px;
+    margin-bottom: 10px;
   }
+
+  /* Title font styling */
   .page-title {
     font-size: 85px;
   }
@@ -33,5 +38,12 @@ header {
 
   .quote {
     font-style: italic;
+    font-size: 20px;
+  }
+
+  /* Genre button styling */
+  .btn-group {
+    margin-top: 20px;
+    padding: 0px;
     font-size: 20px;
   }
