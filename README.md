@@ -32,7 +32,7 @@ THEN I am linked to a page where I can buy that book
 WHEN I click the “clear history” button
 THEN my recent search history is cleared and localStorage is emptied
 
-## Book Finder
+## [Book Finder](https://rclobster.github.io/team-MEC-project-1/)
 
 ### Credit
 
