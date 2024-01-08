@@ -1,3 +1,7 @@
+*{
+  font-family: 'Urbanist', sans-serif;
+}
+
 /* Margins and padding for elements */
 
 body, h1, p, ul {
@@ -11,8 +15,10 @@ body {
     background-color: #bdd5a0a3;
 }
 
+/* class for search bars to left side of page */
 .container {
-    margin: 20px;
+  width: 33.33%;
+  float: left;
 }
 
 /* header styling and font colors */
@@ -24,7 +30,12 @@ header {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     padding: 10px;
+    margin-bottom: 10px;
+
+
   }
+
+  /* Title font styling */
   .page-title {
     font-size: 85px;
   }
@@ -35,7 +46,17 @@ header {
     font-style: italic;
     font-size: 20px;
   }
+select, .form-label{
+  display: block !important;
+  clear: both;
+  padding-bottom: 5px;
 
-#resultParentLi {
-  border: 3px black;
 }
+
+
+  /* Genre button styling */
+.form-label{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
