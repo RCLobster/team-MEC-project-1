@@ -1,4 +1,19 @@
+/* Margins and padding for elements */
 
+body, h1, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* background color for body */
+body {
+    background-color: #bdd5a0a3;
+}
+
+.container {
+    margin: 20px;
+}
 
 /* header styling and font colors */
 header {
