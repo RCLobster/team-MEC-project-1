@@ -3,6 +3,7 @@ var quoteID = document.getElementById("randomQuote");
 var resultsEl = document.getElementById("searchResults");
 var saveJokeBtn = document.getElementById("saveJokeBtn");
 var viewJokesBtn = document.getElementById("viewJokesBtn");
+var savedJokeModalText = document.getElementById("modal-text");
 
 //BookCover Img finder VARIABLES
 var key; //will be filled with ISBN # to be put into getBookCoverImg()
@@ -166,6 +167,26 @@ function bookFinderApiCall() {
     })
 }
 
+function viewSavedJokes() {
+    //empty the modal contents
+    savedJokeModalText.innerHTML = "";
+    //grab all jokes currently saved in localStorage
+    var jokesToDisplay = JSON.parse(localStorage.getItem("savedJokes"));
+    //create new <ul> element under the #modal-text div
+    var ulEl = document.createElement("ul");
+    //loop through jokesToDisplay[] and create elemnets for each joke saved in localStorage
+    for(x=0; x<jokesToDisplay.length; x++) {
+        var liEl = document.createElement("li");
+        var pEl = document.createElement("p");
+        pEl.textContent = jokesToDisplay[x];
+        //append all the pieces together
+        liEl.appendChild(pEl);
+        ulEl.appendChild(liEl);
+        //append the assembled pieces onto the modal
+        savedJokeModalText.appendChild(ulEl);
+    }
+}
+
 function saveJoke() {
     //grab whatever jokes are saved in local storage
     var jokeToSave = JSON.parse(localStorage.getItem("savedJokes"));
@@ -180,6 +201,7 @@ function saveJoke() {
     localStorage.setItem("savedJokes", JSON.stringify(jokeToSave));
 }
 
+viewJokesBtn.addEventListener("click", viewSavedJokes)
 saveJokeBtn.addEventListener("click", saveJoke);
 
 searchBtn.addEventListener("click", editUserInput);
