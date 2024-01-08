@@ -16,9 +16,15 @@ body {
 }
 
 /* class for search bars to left side of page */
-.container {
+.container-left {
   width: 33.33%;
   float: left;
+  margin: 10px;
+}
+
+.container-right {
+  width: 65%;
+  float: right;
 }
 
 /* header styling and font colors */
@@ -46,13 +52,15 @@ header {
     font-style: italic;
     font-size: 20px;
   }
+
+  /* genre selector drop down */
+
 select, .form-label{
   display: block !important;
   clear: both;
   padding-bottom: 5px;
 
 }
-
 
   /* Genre button styling */
 .form-label{
