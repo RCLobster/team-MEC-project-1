@@ -49,13 +49,14 @@ header {
 select, .form-label{
   display: block !important;
   clear: both;
+  padding-bottom: 5px;
 
 }
 
 
   /* Genre button styling */
-
-    /* margin-top: 20px;
-    padding-bottom: 20px;
+.form-label{
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 20px;
-  } */
+  }
