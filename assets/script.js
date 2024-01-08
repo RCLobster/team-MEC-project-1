@@ -166,4 +166,20 @@ function bookFinderApiCall() {
     })
 }
 
+function saveJoke() {
+    //grab whatever jokes are saved in local storage
+    var jokeToSave = JSON.parse(localStorage.getItem("savedJokes"));
+    console.log(jokeToSave);
+    //if nothing is saved, set array equal to an empty array
+    if (jokeToSave === null){
+        jokeToSave = [];
+    }
+    //push the currently displayed joke into jokeToSave[]
+    jokeToSave.push(quoteID.textContent);
+    //re-save jokeToSave array into localStorage
+    localStorage.setItem("savedJokes", JSON.stringify(jokeToSave));
+}
+
+saveJokeBtn.addEventListener("click", saveJoke);
+
 searchBtn.addEventListener("click", editUserInput);
