@@ -34,10 +34,15 @@ THEN my recent search history is cleared and localStorage is emptied
 
 ## [Book Finder](https://rclobster.github.io/team-MEC-project-1/)
 
+![alt text](./assets/images/BookFinder.png)
+![alt text](./assets/images/BookFinder2.png)
+
 ### Credit
 
-Ethan Stone:
 
-Christopher Malatesta:
+Ethan Stone - JavaScript
 
-Margaux Jenica Santos:
+Christopher Malatesta - Css Styling
+
+Margaux Jenica Santos - HTML, CSS Styling, README
+
