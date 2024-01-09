@@ -4,7 +4,7 @@
 Book Finder is a which allows users to search a database of books using search parameters such as title, author, genre, etc. The website also includes a random joke generator which users can save locally and refer back to.
 
 ## Project Requirements
-1. Must use at least two server-side APIs
+1. Must use at least two server-side APIs 
 2. Must use a CSS framework other than Bootstrap
 3. Must use client-side storage to store persistent data
 4. Must have a polished Ul
@@ -39,8 +39,10 @@ THEN my recent search history is cleared and localStorage is emptied
 
 ### Credit
 
+
 Ethan Stone - JavaScript
 
 Christopher Malatesta - Css Styling
 
 Margaux Jenica Santos - HTML, CSS Styling, README
+
